@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>STC Token Sale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Buy STC161 Tokens</h1>
+  <p><strong>Rate:</strong> <span id="rateDisplay">Loading...</span> tokens / ETH</p>
+
+  <button id="connectWallet">Connect Wallet</button>
+  <p id="walletAddress"></p>
+
+  <input type="number" id="ethAmount" placeholder="Amount in ETH" />
+  <button id="buyToken">Buy Tokens</button>
+
+  <p id="status"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
