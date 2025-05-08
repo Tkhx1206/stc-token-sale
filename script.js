@@ -147,7 +147,11 @@ const saleAbi = [
 let provider, signer, saleContract;
 
 document.getElementById("connectWallet").onclick = async () => {
+  console.log("Connect Wallet button clicked!");
+
   if (window.ethereum) {
+    console.log("MetaMask detected");
+
     await window.ethereum.request({ method: "eth_requestAccounts" });
     provider = new ethers.providers.Web3Provider(window.ethereum);
     signer = provider.getSigner();
@@ -156,8 +160,13 @@ document.getElementById("connectWallet").onclick = async () => {
 
     saleContract = new ethers.Contract(saleContractAddress, saleAbi, signer);
 
-    const rate = await saleContract.rate();
-    document.getElementById("rateDisplay").innerText = rate.toString();
+    try {
+      const rate = await saleContract.rate();
+      document.getElementById("rateDisplay").innerText = rate.toString();
+    } catch (err) {
+      console.error("Error fetching rate:", err);
+      document.getElementById("rateDisplay").innerText = "Error fetching rate";
+    }
   } else {
     alert("Install MetaMask!");
   }
